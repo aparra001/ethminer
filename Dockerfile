@@ -38,5 +38,5 @@ ENV GPU_TEMP_START=60
 # Start miner. Note that wallet address and worker name need to be set
 # in the container launch.
 CMD ["bash", "-c", "/usr/local/bin/ethminer -U --api-port 3000 \
---HWMON 2 --tstart 60 --tstop 90 --exit \
+--HWMON 2 --tstart ${GPU_TEMP_START} --tstop ${GPU_TEMP_STOP} --exit \
 -P stratums://$0xBAC4787497Ac1fcf37510EB2362F91FDc87f3519.aws@us1.ethermine.org:4444"]
