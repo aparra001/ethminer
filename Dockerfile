@@ -28,7 +28,7 @@ FROM nvidia/cuda:10.2-base-ubuntu18.04
 COPY --from=build /usr/local/bin/ethminer /usr/local/bin/
 
 # Miner API port inside container
-ENV ETHMINER_API_PORT=3000
+ENV ETHMINER_API_PORT=4444
 EXPOSE ${ETHMINER_API_PORT}
 
 # Prevent GPU overheading by stopping in 90C and starting again in 60C
@@ -37,6 +37,6 @@ ENV GPU_TEMP_START=60
 
 # Start miner. Note that wallet address and worker name need to be set
 # in the container launch.
-CMD ["bash", "-c", "/usr/local/bin/ethminer -U --api-port 3000 \
+CMD ["bash", "-c", "/usr/local/bin/ethminer -U --api-port 4444 \
 --HWMON 2 --tstart ${GPU_TEMP_START} --tstop ${GPU_TEMP_STOP} --exit \
 -P stratums://0xBAC4787497Ac1fcf37510EB2362F91FDc87f3519.aws@us1.ethermine.org:4444"]
